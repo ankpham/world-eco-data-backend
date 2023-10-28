@@ -3,6 +3,7 @@ package com.ankpham.worldecodatabackend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import com.ankpham.worldecodatabackend.repository.LandRepository;
 import com.ankpham.worldecodatabackend.service.LandService;
 
 @RestController
+@CrossOrigin
 public class LandController {
     @Autowired
     LandService service;
@@ -27,10 +29,11 @@ public class LandController {
 
     @PostMapping(value="/get/land/desc-year")
     public List<Land> getPSADbyDescYear(@RequestBody LandRequest land) {
+        System.out.println("asd");
         return repository.getByDescYear(land.getDesc(), land.getYear());
     }
 
-        @PostMapping(value="/get/land/desc-year-high-low")
+    @PostMapping(value="/get/land/desc-year-high-low")
     public Land[] getCO2byDescYearSortHighToLow(@RequestBody LandRequest land) {
         return service.sortHighLow(land.getDesc(), land.getYear());
     }

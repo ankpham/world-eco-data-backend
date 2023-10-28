@@ -3,6 +3,7 @@ package com.ankpham.worldecodatabackend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import com.ankpham.worldecodatabackend.repository.CO2Repository;
 import com.ankpham.worldecodatabackend.service.CO2Service;
 
 @RestController
+@CrossOrigin
 public class CO2Controller {
     @Autowired
     CO2Service service;
