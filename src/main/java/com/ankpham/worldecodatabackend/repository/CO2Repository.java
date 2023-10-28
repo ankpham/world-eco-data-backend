@@ -8,37 +8,37 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.ankpham.worldecodatabackend.object.Land;
+import com.ankpham.worldecodatabackend.object.CO2;
 import com.google.gson.Gson;
 
 @Repository
-public class LandRepository {
+public class CO2Repository {
     
-    public Land[] get() {
-        String DataPath = "../world-eco-data-backend/src/main/resources/data/land-data.json";
+    public CO2[] get() {
+        String DataPath = "../world-eco-data-backend/src/main/resources/data/co2-data.json";
 		Gson gson = new Gson();
 
 		try (
 			Reader reader = new FileReader(DataPath)
 			)
 		{
-			Land[] data = gson.fromJson(reader, Land[].class);
+			CO2[] data = gson.fromJson(reader, CO2[].class);
 
 			return data;
         }
 		catch (IOException e) {
-			return new Land[0];
+			return new CO2[0];
 		}
     }
 
-    public List<Land> getByDesc(String desc) {
+    public List<CO2> getByDesc(String desc) {
 		try 
 		{
-			Land[] data = get();
+			CO2[] data = get();
 
-            List<Land> returnData = new ArrayList<>();
+            List<CO2> returnData = new ArrayList<>();
 
-            for (Land i : data) {
+            for (CO2 i : data) {
                 if (i.getDesc().equals(desc)) {
                     returnData.add(i);
                 }
@@ -47,18 +47,18 @@ public class LandRepository {
 			return returnData;
         }
 		catch (Exception e) {
-			return new ArrayList<Land>();
+			return new ArrayList<CO2>();
 		}
     }
 
-    public List<Land> getByDescYear(String desc, int year) {
+    public List<CO2> getByDescYear(String desc, int year) {
 		try 
 		{
-			Land[] data = get();
+			CO2[] data = get();
 
-            List<Land> returnData = new ArrayList<>();
+            List<CO2> returnData = new ArrayList<>();
 
-			for (Land i : data) {
+			for (CO2 i : data) {
                 if (i.getDesc().equals(desc) && i.getYear() == year) {
                     returnData.add(i);
                 }
@@ -67,7 +67,7 @@ public class LandRepository {
 			return returnData;
         }
 		catch (Exception e) {
-			return new ArrayList<Land>();
+			return new ArrayList<CO2>();
 		}
     }
 }
